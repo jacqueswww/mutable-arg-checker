@@ -80,8 +80,9 @@ def walk_path(path):
     for root, dirs, files in os.walk(path, topdown=False):
         for name in files:
             file_name = os.path.join(root, name)
-            with open(file_name) as f:
-                check_args(file_name, f.read())
+            if file_name.endswith('.py'):
+                with open(file_name) as f:
+                    check_args(file_name, f.read())
 
 
 if __name__ == '__main__':
